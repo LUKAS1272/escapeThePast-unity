@@ -1,0 +1,6 @@
+branch: Lockpick;
+redPot: Strength potion, bluePot: Sleeping potion, greenPot: Invisibility potion;
+spear: Break into the chest, key: Use keys;
+key: Use keys;
+redPot: Strength potion, x: Give up;
+axe: Destroy it;

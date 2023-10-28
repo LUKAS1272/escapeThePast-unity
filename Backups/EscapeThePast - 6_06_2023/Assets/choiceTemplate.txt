@@ -1,0 +1,1 @@
+redPot: Strength potion, bluePot: Sleeping potion, greenPot: Invisibility potion;

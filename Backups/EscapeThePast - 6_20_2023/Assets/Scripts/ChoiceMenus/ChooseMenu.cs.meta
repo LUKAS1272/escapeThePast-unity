@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 90e38abf3c71008459a11e1885185897
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redPot: {fileID: 11400000, guid: 5d040ca44912e074cbbe4927e3c3a66c, type: 2}
+  - greenPot: {fileID: 11400000, guid: d372df70eb90ca24fabcb2dc2798fad9, type: 2}
+  - bluePot: {fileID: 11400000, guid: 7a5481ef36f37b743b47b99ff04e9c2c, type: 2}
+  - menu: {fileID: 8760278765658053259, guid: 7803db9e94be7fc479d418b3490556e1, type: 3}
+  - menuButton: {fileID: 1342575608726236145, guid: e61306db3c85a6c47b673cabe56cb865, type: 3}
+  - menuText: {fileID: 9213118987376250037, guid: d50e1750e7317234e9f07968dcac09f6, type: 3}
+  - uiParent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

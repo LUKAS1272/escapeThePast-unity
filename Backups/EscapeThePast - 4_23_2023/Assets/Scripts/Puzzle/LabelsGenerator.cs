@@ -1,0 +1,106 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+
+public class LabelsGenerator : MonoBehaviour
+{
+    public static LabelsGenerator Instance;
+    void Awake() { Instance = this; }
+
+    string[] linesArray;
+    int size;
+
+    public List<List<int>> vertical = new List<List<int>>();
+    public List<List<int>> horizontal = new List<List<int>>();
+
+
+    bool canExist() {
+        foreach (string line in linesArray) {
+            if (line.Length != size) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    void verticalScan() {
+        for (int i = 0; i < size; i++) {
+            vertical.Add(new List<int>());
+            int streak = 0;
+
+            for (int j = 0; j < size; j++) {
+                if (linesArray[i][j] == '+') {
+                   streak++;
+
+                    if (j == size - 1) {
+                        vertical[i].Add(streak);
+                    }
+                } else if (linesArray[i][j] == '-') {
+                    if (streak > 0) {
+                        vertical[i].Add(streak);
+                        streak = 0;
+                    }
+                }
+
+                if (j == size - 1 && vertical[i].Count == 0) {
+                    vertical[i].Add(0);
+                }
+            }
+        }
+    }
+
+    void horizontalScan() {
+        for (int i = 0; i < size; i++) {
+            horizontal.Add(new List<int>());
+            int streak = 0;
+
+            for (int j = 0; j < size; j++) {
+                if (linesArray[j][i] == '+') {
+                    streak++;
+                    if (j == size - 1) {
+                        horizontal[i].Add(streak);
+                    }
+                } else if (linesArray[j][i] == '-') {
+                if (streak > 0) {
+                        horizontal[i].Add(streak);
+                        streak = 0;
+                    }
+                }
+
+                if (j == size - 1 && horizontal[i].Count == 0) {
+                    horizontal[i].Add(0);
+                }
+            }
+        }
+    }
+
+    int longestIn(List<List<int>> lists) {
+        int longest = 0;
+        foreach (List<int> list in lists) {
+            if (list.Count > longest) {
+                longest = list.Count;
+            }
+        }
+        return longest;
+    }
+
+    public int findLongest() {
+        vertical.Clear();
+        horizontal.Clear();
+
+        linesArray = PuzzleGenerator.Instance.mapString.Split(new char[] {'\n', '\r'}, System.StringSplitOptions.RemoveEmptyEntries);
+        size = PuzzleGenerator.Instance.size;
+
+
+        verticalScan();
+        horizontalScan();
+
+        if (longestIn(horizontal) > longestIn(vertical)) {
+            return longestIn(horizontal);
+        } else {
+            return longestIn(vertical);
+        }
+    }
+}
